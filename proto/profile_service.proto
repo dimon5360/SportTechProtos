@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "app/main/proto";
+
+import "google/protobuf/timestamp.proto";
+
+service ProfileUsersService {
+
+    rpc CreateProfile(CreateProfileRequst) returns (UserProfileResponse) {}
+    rpc GetProfile(GetProfileRequest) returns (UserProfileResponse) {}
+}
+
+message UserProfileResponse {
+    string firstname = 1;
+    string lastname = 2;
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
+}
+
+message GetProfileRequest {
+    uint64 user_id = 1;
+}
+
+message CreateProfileRequst {
+    string username = 1;
+    string firstname = 2;
+    string lastname = 3;
+}

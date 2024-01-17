@@ -1,9 +1,8 @@
 #!/bin/bash
 
-unameOut=$(uname -a)
-case "${unameOut}" in
-    Darwin*)    protoc=protoc;;
-    MINGW*)     protoc=D:/projects/protoc/bin/protoc.exe;;
+case "${OSTYPE}" in
+    darwin*)    protoc=protoc;;
+    linux*)     protoc=protoc;;
     *Msys)      protoc=D:/projects/protoc/bin/protoc.exe;;
 esac
 
