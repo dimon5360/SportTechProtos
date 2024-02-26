@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "app/main/proto";
+
+import "google/protobuf/timestamp.proto";
+
+service ReportUsersService {
+
+    rpc AddReport(AddReportRequst) returns (ReportResponse) {}
+    rpc GetReport(GetReportRequest) returns (ReportResponse) {}
+}
+
+message ReportResponse {
+    uint64 user_id = 1;
+    string report = 2;
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
+}
+
+message GetReportRequest {
+    uint64 user_id = 1;
+}
+
+message AddReportRequst {
+	uint64 user_id = 1;
+    string report = 2;
+}
